@@ -11,6 +11,7 @@ import {
 import { Label } from "@/components/ui/label.tsx";
 import { Input } from "@/components/ui/input.tsx";
 import { Button } from "@/components/ui/button.tsx";
+import { Link } from "react-router-dom";
 
 export const RegisterRoute: FC = () => {
   const [username, setUsername] = useState("");
@@ -77,8 +78,11 @@ export const RegisterRoute: FC = () => {
             </div>
           </form>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col space-y-1.5">
           <Button className="w-full">Create account</Button>
+          <p className="text-sm text-muted-foreground self-start">
+            Already a member of just chatting? <Link to="/login" className="underline">Login!</Link>
+          </p>
         </CardFooter>
       </Card>
     </Main>
