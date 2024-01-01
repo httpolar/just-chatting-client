@@ -103,6 +103,7 @@
   }
 
   .main {
+    @apply p-4;
     grid-area: main;
   }
 }
