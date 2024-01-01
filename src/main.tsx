@@ -1,9 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootRoute } from "@/routes/root.tsx";
 import { ErrorRoute } from "@/error-route.tsx";
 import { HomeRoute } from "@/routes/home.tsx";
+import { RegisterRoute } from "@/routes/register.tsx";
 
 import "@/styles/global.css";
 
@@ -17,11 +18,15 @@ const router = createBrowserRouter([
         index: true,
         element: <HomeRoute />,
       },
+      {
+        path: "register",
+        element: <RegisterRoute />,
+      },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,
