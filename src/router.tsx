@@ -3,6 +3,7 @@ import { RootRoute } from "@/routes/root.tsx";
 import { ErrorRoute } from "@/error-route.tsx";
 import { HomeRoute } from "@/routes/home.tsx";
 import { RegisterRoute } from "@/routes/register.tsx";
+import { LoginRoute } from "@/routes/login.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <RegisterRoute />,
+      },
+      {
+        path: "login",
+        element: <LoginRoute />,
       },
     ],
   },
