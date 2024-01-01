@@ -37,14 +37,14 @@ export const RegisterRoute: FC = () => {
     <Main className="flex flex-col justify-center items-center">
       <Card className="max-w-[480px] w-full">
         <CardHeader>
-          <CardTitle>Регистрация</CardTitle>
-          <CardDescription>Чтобы начать общаться, вам нужно создать аккаунт!</CardDescription>
+          <CardTitle>Registration</CardTitle>
+          <CardDescription>You need an account to start chatting!</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="username">Имя пользователя</Label>
+                <Label htmlFor="username">Username</Label>
                 <Input
                   id="username"
                   placeholder="john"
@@ -54,7 +54,7 @@ export const RegisterRoute: FC = () => {
               </div>
 
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password">Пароль</Label>
+                <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
                   placeholder="******"
@@ -65,7 +65,7 @@ export const RegisterRoute: FC = () => {
               </div>
 
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password-confirm">Повтор пароля</Label>
+                <Label htmlFor="password-confirm">Password Confirmation</Label>
                 <Input
                   id="password-confirm"
                   placeholder="******"
@@ -78,7 +78,7 @@ export const RegisterRoute: FC = () => {
           </form>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Зарегистрироваться</Button>
+          <Button className="w-full">Create account</Button>
         </CardFooter>
       </Card>
     </Main>
