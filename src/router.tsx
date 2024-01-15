@@ -4,6 +4,8 @@ import { ErrorRoute } from "@/error-route.tsx";
 import { HomeRoute } from "@/routes/home.tsx";
 import { RegisterRoute } from "@/routes/register.tsx";
 import { LoginRoute } from "@/routes/login.tsx";
+import { AuthenticatedOnly } from "@/components/auth/authenticated-only.tsx";
+import { UnauthenticatedOnly } from "@/components/auth/unauthenticated-only.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -13,15 +15,30 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomeRoute />,
+        id: "home",
+        element: (
+          <AuthenticatedOnly>
+            <HomeRoute />
+          </AuthenticatedOnly>
+        ),
       },
       {
         path: "register",
-        element: <RegisterRoute />,
+        id: "register",
+        element: (
+          <UnauthenticatedOnly>
+            <RegisterRoute />
+          </UnauthenticatedOnly>
+        ),
       },
       {
         path: "login",
-        element: <LoginRoute />,
+        id: "login",
+        element: (
+          <UnauthenticatedOnly>
+            <LoginRoute />
+          </UnauthenticatedOnly>
+        ),
       },
     ],
   },
