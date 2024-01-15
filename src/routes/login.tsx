@@ -12,8 +12,11 @@ import { Label } from "@/components/ui/label.tsx";
 import { Input } from "@/components/ui/input.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Link } from "react-router-dom";
+import { useUserStore } from "@/stores/user.ts";
 
 export const LoginRoute: FC = () => {
+  const userStore = useUserStore();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,6 +30,12 @@ export const LoginRoute: FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.set("username", username);
+    formData.set("password", password);
+
+    void userStore.login(formData);
   };
 
   return (
@@ -37,12 +46,13 @@ export const LoginRoute: FC = () => {
           <CardDescription>All chatters must log into their accounts!</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit}>
+          <form id="login-form" onSubmit={handleSubmit}>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="username">Username</Label>
                 <Input
                   id="username"
+                  autoComplete="username"
                   placeholder="john"
                   value={username}
                   onChange={handleUsernameChange}
@@ -55,6 +65,7 @@ export const LoginRoute: FC = () => {
                   id="password"
                   placeholder="******"
                   type="password"
+                  autoComplete="current-password"
                   value={password}
                   onChange={handlePasswordChange}
                 />
@@ -63,9 +74,14 @@ export const LoginRoute: FC = () => {
           </form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-1.5">
-          <Button className="w-full">Login</Button>
+          <Button type="submit" form="login-form" className="w-full">
+            Login
+          </Button>
           <p className="text-sm text-muted-foreground self-start">
-            Don't have an account yet? <Link to="/register" className="underline">Create one!</Link>
+            Don&apos;t have an account yet?{" "}
+            <Link to="/register" className="underline">
+              Create one!
+            </Link>
           </p>
         </CardFooter>
       </Card>
